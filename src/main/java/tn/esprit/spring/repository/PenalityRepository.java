@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import tn.esprit.spring.entities.Training;
+import tn.esprit.spring.entities.Penality;
+
 @Repository
-public interface TrainingRepository extends CrudRepository<Training, Integer> {
-	
-	List<Training> findBySubject(String subject);
+public interface PenalityRepository extends CrudRepository<Penality, Integer> {
+	List<Penality> findByLearner(int idLearner);
 
 }
