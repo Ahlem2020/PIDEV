@@ -51,4 +51,12 @@ public class Partner implements Serializable {
 	 @OneToMany(mappedBy="partner", cascade=CascadeType.ALL)
 		
 	  	private List<Subscription> Subscription;
+	 
+	 @OneToMany(mappedBy="employer", cascade=CascadeType.ALL)
+		
+		private List<Condidacy> condidaciesE;
+	 
+	 @OneToMany(mappedBy="partner", cascade=CascadeType.ALL)
+		
+		private List<Module> modules;
 }

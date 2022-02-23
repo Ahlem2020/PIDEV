@@ -56,7 +56,15 @@ public class Condidacy implements Serializable {
    /* @ManyToOne
     private Interview interview;
 */
-	
+  
+    @ManyToOne
+    private Partner employer;
+    
+    @OneToMany(mappedBy="partner", cascade=CascadeType.ALL)
+
+    private List<Module> module;
+    
+
 	
 	
 	
