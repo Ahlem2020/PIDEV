@@ -20,7 +20,7 @@ public class ModuleServiceImpl implements IModuleService {
 	
 	
 	@Override
-	public void ajouterDc(Module module) {
+	public void ajouterModule(Module module) {
 		
 		moduleRepo.save(module);
 	}

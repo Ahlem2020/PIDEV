@@ -11,7 +11,7 @@ import tn.esprit.spring.entities.Module;
 
 
 public interface IModuleService {
-	 void ajouterDc(Module module);
+	 void ajouterModule(Module module);
 	 List<Module> listerModules();
 	 void SupprimerModule(int id);
 	 Module UpdateModule(Module m);

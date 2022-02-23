@@ -39,10 +39,12 @@ public class Condidacy implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="MM/dd/yyyy")
 	private Date created_at;
+	
 	@Enumerated(EnumType.STRING)
 	private State state;
+	
 	@Enumerated(EnumType.STRING)
-	private Type type;
+	private TypeCondidacy type;
 	 
 	
     @ManyToOne

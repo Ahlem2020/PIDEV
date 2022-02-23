@@ -2,5 +2,5 @@ package tn.esprit.spring.entities;
 
 public enum State {
 
-	Accepted,Refused,InProgress
+	Accepted,Refused,In_Progress
 }
