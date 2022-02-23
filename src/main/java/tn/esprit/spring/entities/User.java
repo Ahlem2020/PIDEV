@@ -28,8 +28,36 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String name;
+	private Long id;
+	private String email;
+	private String password;
+	private String passwordConfirm;
+	private String firstName;
+	private String lastName;
+	private Date dateOfBirth;
+	private String sexe;
+	private String civilState;
+	private String address;
+	private int postalCode;
+	private int phoneNumber;
+	private String nationality;
+	private String job;
+	private String studyLevel;
+	private String status;
+	private float monthlyUncome;
+	private int nbPersFamily;
+	private int nbStudentsInFamily;
+	private String favory;
+	
+	/*@OneToMany(cascade = CascadeType.ALL, mappedBy="users")
+	private Set<Reclamation> reclamations;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="users")
+	private Set<Meeting> meetings;
+	
+	@OneToOne
+	private IntrestedBy intrestedBy;*/
+	
 	
 	
     @OneToMany(mappedBy="candidat", cascade=CascadeType.ALL)

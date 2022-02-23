@@ -16,7 +16,8 @@ public class CondidacyService implements ICondidacyService{
 
 	
 	@Override
-	public void addCandidacy(Condidacy c) {
+	public void addCandidacy(Condidacy c, int idUser) {
+		
 		condidacyRepo.save(c);
 		
 	}

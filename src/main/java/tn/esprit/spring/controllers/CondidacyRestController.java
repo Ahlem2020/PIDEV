@@ -23,9 +23,9 @@ public class CondidacyRestController {
 	@Autowired
 	ICondidacyService condidacyService;
 	
-	@PostMapping("/add-condidacy")
-	public void addCondidacy(@RequestBody Condidacy c){
-		condidacyService.addCandidacy(c);
+	@PostMapping("/add-condidacy/{idUser}")
+	public void addCondidacy(@RequestBody Condidacy c,@PathVariable("idUser")int id){
+		condidacyService.addCandidacy(c,id);
 	}
 	
 	@GetMapping("/retrieve-condidacy")
