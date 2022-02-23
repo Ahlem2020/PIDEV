@@ -4,40 +4,36 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Training implements Serializable {
-	
+public class Education implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String subject;
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date startDate;
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date endDate;
-	private int nbreMax;
-	private int nbreParticipation;
-	
-	
+	private int idEduc ;
+	private String establishment ;
+	private String location ;
+	private Date startDate ;
+	private Date endDate ;
+	private String description ;
 
+	 @ManyToOne
+	    private CV cv;
 }

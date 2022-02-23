@@ -4,10 +4,17 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,25 +26,52 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Getter 
 @Setter
-@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Training implements Serializable {
-	
+public class Condidacy implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String subject;
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date startDate;
+	private Date created_at;
+	@Enumerated(EnumType.STRING)
+	private State state;
+	@Enumerated(EnumType.STRING)
+	private Type type;
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date endDate;
-	private int nbreMax;
-	private int nbreParticipation;
+	private Date dateInterview;
+	 
+	
+    @ManyToOne
+    private User candidat;
+   
+    @ManyToOne
+    private JobOffer jobOffer;
+    
+   /* @ManyToOne
+    private Interview interview;
+*/
 	
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

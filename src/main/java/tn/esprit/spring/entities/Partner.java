@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,25 +23,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Training implements Serializable {
-	
+public class Partner implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String subject;
+	private int id ;
+	private String email;
+	private String password;
+	private String note;
+	private String isDisponible ;
+	@Enumerated(EnumType.STRING)
+	private PartnerType type;
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date startDate;
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date endDate;
-	private int nbreMax;
-	private int nbreParticipation;
+	private Date  SubscriptionDate ;
 	
 	
-
+	 @OneToMany(mappedBy="candidature", cascade=CascadeType.ALL)
+		
+	  	private List<JobOffer> jobOffer;
+	 
+	 
+	 @OneToMany(mappedBy="partner", cascade=CascadeType.ALL)
+		
+	  	private List<Subscription> Subscription;
 }

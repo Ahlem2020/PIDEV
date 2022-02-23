@@ -2,12 +2,12 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,26 +18,30 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+
 @Entity
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Training implements Serializable {
-	
+public class Stage implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String subject;
+	private int idStage ;
+	private String establishment ;
+	private String location ; 
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date startDate;
+	private Date startDate ;
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date endDate;
-	private int nbreMax;
-	private int nbreParticipation;
+	private Date endDate ;
+	private String description ;
+	
+	 @ManyToOne
+	    private CV cv;
 	
 	
-
 }
