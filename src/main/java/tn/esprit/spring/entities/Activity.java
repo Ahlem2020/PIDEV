@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,17 +19,13 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Question implements Serializable {
+public class Activity implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String question;
-	private String proposition1;
-	private String proposition2;
-	private String proposition3;
-	private String reponse;
+	public int id;
+	public String designation;
+	public Timestamp hour;
 	
-	@ManyToOne 
-	private Quiz quiz;
-
+	@ManyToOne
+	public Event Event;
 }

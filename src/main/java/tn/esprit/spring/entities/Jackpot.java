@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,26 +24,29 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable{
+public class Jackpot implements Serializable{
 
 	
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int id;
-	public String firstName;
-	public String lastName;
-	public int monthlyIncome;
-	public String civilState;
-	public int nbPersFamily;
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	public List<Event> events;
-	
+	public Date created_at;
+	public Date updated_at;
+	public int amount;
+	public String designation;
+	public String goal;
+	@OneToOne
+	public Event event;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL,mappedBy="user")
+	@OneToMany(cascade= CascadeType.ALL,mappedBy="jackpot")
 	public List<Don> dons;
 	
 	
+	@ManyToOne
+	public Caisse caisse;
 }

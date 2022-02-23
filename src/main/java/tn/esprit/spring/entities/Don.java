@@ -3,6 +3,7 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,15 +20,23 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Certificate implements Serializable {
+public class Don implements Serializable{
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String qrCode;
-	private String identifier;
-		
+	public int id;
+	//Nameof the donater//
+	public String SourceDon ;
+	public int amount;
+	public Date created_at;
+	
+	
 	
 	@ManyToOne
-	private Training training;
+	public Jackpot jackpot;
 	
+	@ManyToOne
+	public User user;
+
 }
