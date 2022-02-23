@@ -22,4 +22,5 @@ public class Tags  implements Serializable  {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+
 }

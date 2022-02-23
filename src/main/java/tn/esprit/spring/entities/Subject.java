@@ -32,12 +32,10 @@ public class Subject  implements Serializable  {
 	private int nbVue;
 	private Date CreatedAt;
 	private Date UpdatedAt;
-	private Domaine domaine;
-	@OneToMany 
+	private Domain domaine;
+	@OneToMany(mappedBy="") 
 	private List<Comment> Comments;
-	public enum Domaine{
-		couture,texture,Sewing,Coiffure;
-	}
+
 
 	
 	

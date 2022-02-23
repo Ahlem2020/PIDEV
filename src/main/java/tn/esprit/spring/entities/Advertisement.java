@@ -30,6 +30,8 @@ public class Advertisement  implements Serializable  {
 	private int nbVueCible;
 	private int NbVueFinal;
 	private Double Price;
+	private String Upload;
+	private Domain domain;
 	
 	
 	
