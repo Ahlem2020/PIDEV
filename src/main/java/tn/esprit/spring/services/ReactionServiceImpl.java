@@ -34,9 +34,5 @@ public class ReactionServiceImpl implements IReactionService {
 		return (List<Reaction>) reactionRepo.findAll();
 	}
 
-	@Override
-	public Reaction findById(int id) {
-		return reactionRepo.findById(id).orElse(null);
-	}
 
 }

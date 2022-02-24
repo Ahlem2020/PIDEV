@@ -22,6 +22,8 @@ public class TrainingRestController {
 	@Autowired
 	ITrainingService trainingServ;
 	
+	
+	//http://localhost:8083/women/training/add
 	@PostMapping("/add")
 	@ResponseBody
 	public Training addTraining(@RequestBody Training t)
@@ -29,6 +31,7 @@ public class TrainingRestController {
 		return trainingServ.addTraining(t);
 	}
 	
+	//http://localhost:8083/women/training/update
 	@PutMapping("/update")
 	@ResponseBody
 	public Training updateTraining(@RequestBody Training t) {

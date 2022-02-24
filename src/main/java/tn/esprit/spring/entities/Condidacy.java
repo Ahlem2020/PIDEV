@@ -15,9 +15,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,48 +26,57 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
-@NoArgsConstructor
+@Setter
+@NoArgsConstructor 
 @AllArgsConstructor
-public class Training implements Serializable {
-	
+
+public class Condidacy implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String subject;
 	
 	@Temporal(TemporalType.DATE)
-	private Date startDate;
-	
-	@Temporal(TemporalType.DATE)
-	private Date endDate;
-	
-	private int nbreMax;
-	private int nbreParticipation;
-	private int note;
+	@JsonFormat(pattern="MM/dd/yyyy")
+	private Date created_at;
 	
 	@Enumerated(EnumType.STRING)
-	private Domain domain;
+	private State state;
 	
-	private String cours;
-	private boolean isCertified;
-	
-	@OneToMany(mappedBy = "training", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	private List<Certificate> certificates;
-	
-	@ManyToOne
-	private Quiz quiz;
-	
-	@OneToMany(mappedBy = "training", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	private List<Penality> penalities;
-				
-	@OneToMany(mappedBy = "training", fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	private List<Reaction> reactions;
+	@Enumerated(EnumType.STRING)
+	private Type type;
+	 	
+    @ManyToOne
+    private User candidat;
+    
+    @ManyToOne
+    private Partner employer;
+    
+    @OneToMany(mappedBy="partner", cascade=CascadeType.ALL)
+    private List<Module> module;
+    
+    @ManyToOne
+    private JobOffer jobOffer;
+  
+    
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<User> learners;
 	
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

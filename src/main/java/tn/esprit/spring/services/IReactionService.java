@@ -12,7 +12,5 @@ public interface IReactionService {
 	void deleteReaction(int idReaction);
 	
 	List<Reaction> findAllReactions();
-	
-	Reaction findById(int id);
 
 }
