@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,17 +28,18 @@ public class Meeting implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date date;
-	
-	private String hour;
+	private int hour;
+	private String message ;
+	@Enumerated(EnumType.STRING)
+	private Etat validity ;
 	
 	@ManyToOne
-	private Partner partner;
+	Partner partner;
 	
 	@ManyToOne
-	private User user;
+	User user;
 
 
 }
