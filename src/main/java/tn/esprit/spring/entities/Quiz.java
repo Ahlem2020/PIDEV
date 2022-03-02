@@ -6,15 +6,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,31 +24,19 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Jackpot implements Serializable{
 
-	
-	/**
-	 * 
-	 */
-	
-	private static final long serialVersionUID = 1L;
+public class Quiz implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public int id;
-	public Date created_at;
-	public Date updated_at;
-	public int amount;
-	public String designation;
-	public String goal;
-	public Etat etat;
-	@OneToOne
-	public Event event;
+	private int id;
+	private int timing;
 	
-	@JsonIgnore
-	@OneToMany(cascade= CascadeType.ALL,mappedBy="jackpot",  orphanRemoval = true)
-	public List<Don> dons;
+	@OneToMany(mappedBy = "quiz", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Question> questions;
+	
+	@OneToMany(mappedBy = "quiz", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Training> training;
 	
 	
-	@ManyToOne
-	public Caisse caisse;
+	
 }

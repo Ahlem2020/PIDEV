@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +28,38 @@ public class Activity implements Serializable {
 	public String designation;
 	public Timestamp hour;
 	
+	/*public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public Timestamp getHour() {
+		return hour;
+	}
+
+	public void setHour(Timestamp hour) {
+		this.hour = hour;
+	}
+
+	public Event getEvent() {
+		return Event;
+	}
+
+	public void setEvent(Event event) {
+		Event = event;
+	}*/
+@JsonIgnore
 	@ManyToOne
 	public Event Event;
 }

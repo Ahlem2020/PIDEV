@@ -28,10 +28,21 @@ public class IDonServiceImpl implements IDonService{
 	}
 
 
-	/*@Override
-	public List<Don> getDonByJackpot(int id) {
-		Jackpot j=jr.findById(id).orElse(null);
-		return ;
-	}*/
 
-}
+	@Override
+	public List<Don> getDonByJackpot(int id) {
+		Jackpot jack = jr.findById(id).orElse(null);
+		return jack.getDons();
+		
+	}
+
+
+
+
+
+
+	
+
+
+	}
+

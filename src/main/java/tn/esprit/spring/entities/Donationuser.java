@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 
-import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,25 +13,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Parameters implements Serializable{
+public class Donationuser {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public int id;
-	private int monthlyincome_420;
-	private int monthlyincome_800;
-	private int nbPersFamily_4;
-	private int nbPersFamily_5;
-	private int nbStudentsInFamily_1;
-	private int nbStudentsInFamily_2;
-	private int nbStudentsInFamily_3;
-	private int medicalNeed;
-	private int socialNeed;
-	private int needy;
-	private int unemployed;
-	private int alreadywon;
+	private String firstName;
+	private String lastName;
+	private float monthlyincome;
+	private int nbPersFamily;
+	private int nbStudentsInFamily;
+	private String medicalNeed;
+	private String socialNeed;
+	private String needy;
+	private String unemployed ;
+	private double amoutwon;
+	
+	
 }

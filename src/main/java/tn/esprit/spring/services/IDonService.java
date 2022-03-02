@@ -9,5 +9,5 @@ public interface IDonService {
 	
 	
 	public void addDon(Don don);
-	//public List<Don> getDonByJackpot(int id);
+	public List<Don> getDonByJackpot(int id);
 }
