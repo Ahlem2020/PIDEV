@@ -1,15 +1,24 @@
 package tn.esprit.spring.services;
 
+ 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
- 
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Service;
+
 import tn.esprit.spring.entities.Subject;
 import tn.esprit.spring.repository.SubjectRepository;
 
 
+@Service
 
-public class SubjectService implements ISubjectService  {
+public class SubjectServiceImpli implements ISubjectService  {
+	@Autowired
+	  EmailSenderService service;
 	@Autowired
 	SubjectRepository subjectRepository;
 
@@ -21,9 +30,18 @@ public class SubjectService implements ISubjectService  {
 
 	@Override
 	public Subject addSubject(Subject S) {
+		send();
 		return subjectRepository.save(S);
+		
  
 	}
+ 
+				
+	@EventListener(ApplicationReadyEvent.class)
+	public void send(){
+	service.sendMail("ahlem.benfradj@esprit.tn","New Subject is Added Check this out !!", "New Subject is Added Check this out !!");
+	}
+	
 
 	@Override
 	public void deleteSubject(int id) {
@@ -38,13 +56,13 @@ public class SubjectService implements ISubjectService  {
 
 	@Override
 	public Subject retrieveSubject(int id) {
- 		return null;
+		return subjectRepository.findById(id).orElse(null);	
 	}
 
 	@Override
-	public List<Subject> retrieveSubjectByDate() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Subject> retrieveSubjectByDate(){
+ 				return (List<Subject>) 	subjectRepository.retrieveClientsByDateSql();
 	}
+
 	
 }

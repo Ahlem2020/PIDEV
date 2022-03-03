@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,27 +24,18 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Advertisement  implements Serializable  {
+
+public class Quiz implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String NameAd;
-	private String  Canal;
+	private int timing;
 	
-	@Temporal(TemporalType.DATE)
-	private Date DateDeb;
+	@OneToMany(mappedBy = "quiz", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Question> questions;
 	
-	@Temporal(TemporalType.DATE)
-	private Date DateFin;
-	
-	private int nbVueCible;
-	private int NbVueFinal;
-	private Double Price;
-	private String Upload;
-	
-	@Enumerated(EnumType.STRING)
-	private Domain domain;
-	
+	@OneToMany(mappedBy = "quiz", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Training> training;
 	
 	
 	

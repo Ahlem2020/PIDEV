@@ -4,12 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,33 +19,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Advertisement  implements Serializable  {
+public class Education implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String NameAd;
-	private String  Canal;
+	private int idEduc ;
+	private String establishment ;
+	private String location ;
 	
-	@Temporal(TemporalType.DATE)
-	private Date DateDeb;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date startDate ;
 	
-	@Temporal(TemporalType.DATE)
-	private Date DateFin;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date endDate ;
 	
-	private int nbVueCible;
-	private int NbVueFinal;
-	private Double Price;
-	private String Upload;
-	
-	@Enumerated(EnumType.STRING)
-	private Domain domain;
-	
-	
-	
-	
+	private String description ;
+
+	 @ManyToOne
+	    private CV cv;
 }

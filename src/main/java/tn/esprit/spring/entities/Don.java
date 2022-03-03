@@ -2,17 +2,13 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,21 +20,23 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comment  implements Serializable  {
+public class Don implements Serializable{
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	public int id;
+	//Nameof the donater//
+	public String SourceDon ;
+	public int amount;
+	public Date created_at;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date CreatedAt;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date UpdatedAt;
 	
-	private int nbLike;
-	private int nbDislike;
-	private String Content;
-	@JsonIgnore
-	@ManyToOne 
-	private Subject subject;
+	@ManyToOne
+	public Jackpot jackpot;
+	
+	@ManyToOne
+	public User user;
+
 }

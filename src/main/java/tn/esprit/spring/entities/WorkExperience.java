@@ -2,14 +2,12 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,32 +17,27 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Advertisement  implements Serializable  {
+public class WorkExperience implements Serializable{
+ 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String NameAd;
-	private String  Canal;
+	private int id ;
+	private String employer ;
+	private String location ;
 	
 	@Temporal(TemporalType.DATE)
-	private Date DateDeb;
+	private Date StartDate;
 	
 	@Temporal(TemporalType.DATE)
-	private Date DateFin;
+	private Date endDate ;
 	
-	private int nbVueCible;
-	private int NbVueFinal;
-	private Double Price;
-	private String Upload;
+	private String description;
 	
-	@Enumerated(EnumType.STRING)
-	private Domain domain;
-	
-	
-	
-	
+
+	@ManyToOne
+	private CV cv;
 }

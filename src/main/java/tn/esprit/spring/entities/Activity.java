@@ -1,10 +1,9 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,25 +19,13 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reaction implements Serializable {
+public class Activity implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	
-	@Enumerated(EnumType.STRING)
-	private ReactType react;
-	
-	@ManyToOne 
-	private Training training;
+	public int id;
+	public String designation;
+	public Timestamp hour;
 	
 	@ManyToOne
-	private User user;
-	/*
-	@ManyToOne
-	private Subject subject;
-	@ManyToOne
-	private Comment comment;
-	*/
-	
-
+	public Event Event;
 }

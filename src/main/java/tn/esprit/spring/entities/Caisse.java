@@ -1,14 +1,14 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,25 +20,14 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Reaction implements Serializable {
+public class Caisse implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	public int id;
+	public int amout;
 	
-	@Enumerated(EnumType.STRING)
-	private ReactType react;
 	
-	@ManyToOne 
-	private Training training;
+	@OneToMany(cascade= CascadeType.ALL,mappedBy="caisse")
+	public List<Jackpot> jackpots;
 	
-	@ManyToOne
-	private User user;
-	/*
-	@ManyToOne
-	private Subject subject;
-	@ManyToOne
-	private Comment comment;
-	*/
-	
-
 }

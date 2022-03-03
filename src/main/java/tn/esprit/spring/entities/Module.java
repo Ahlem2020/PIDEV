@@ -9,10 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,25 +16,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Comment  implements Serializable  {
+public class Module implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private int capacity;
+	private int nbreInscription;
+	private String name;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date CreatedAt;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date UpdatedAt;
-	
-	private int nbLike;
-	private int nbDislike;
-	private String Content;
-	@JsonIgnore
-	@ManyToOne 
-	private Subject subject;
+	@ManyToOne
+	private Partner partner;
+
+
 }
