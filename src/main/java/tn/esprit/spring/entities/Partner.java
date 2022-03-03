@@ -3,60 +3,56 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Partner implements Serializable {
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id ;
+	private Long id;
 	private String email;
 	private String password;
-	private String note;
-	private String isDisponible ;
+	private String passwordConfirm;
+	private int note;
+	private boolean isDisponible;
+	private String name;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date subscriptionDate;
+	
 	@Enumerated(EnumType.STRING)
 	private PartnerType type;
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date  SubscriptionDate ;
 	
+	@OneToMany(mappedBy = "partner", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Subscription> subscriptions;
 	
-	 @OneToMany(mappedBy="candidature", cascade=CascadeType.ALL)
-		
-	  	private List<JobOffer> jobOffer;
-	 
-	 
-	 @OneToMany(mappedBy="partner", cascade=CascadeType.ALL)
-		
-	  	private List<Subscription> Subscription;
-	 
-	 @OneToMany(mappedBy="employer", cascade=CascadeType.ALL)
-		
-		private List<Condidacy> condidaciesE;
-	 
-	 @OneToMany(mappedBy="partner", cascade=CascadeType.ALL)
-		
-		private List<Module> modules;
+	@OneToMany(mappedBy = "partner", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Meeting> meetings;
+	
+	@OneToMany(mappedBy = "employer", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
+	private List<Condidacy> condidaciesE;
+ 
+	@OneToMany(mappedBy="partner", cascade=CascadeType.ALL)	
+	private List<Module> modules;
+	
+	@OneToMany(mappedBy="candidature", cascade=CascadeType.ALL)	
+  	private List<JobOffer> jobOffer;
+ 
+ 
+	@OneToMany(mappedBy="partner", cascade=CascadeType.ALL)	
+  	private List<Subscription> Subscription;
+	
+
 }

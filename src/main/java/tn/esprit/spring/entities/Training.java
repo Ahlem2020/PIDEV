@@ -4,14 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,14 +35,37 @@ public class Training implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String subject;
+	
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="MM/dd/yyyy")
 	private Date startDate;
+	
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="MM/dd/yyyy")
 	private Date endDate;
+	
 	private int nbreMax;
 	private int nbreParticipation;
+	private int note;
+	
+	@Enumerated(EnumType.STRING)
+	private Domain domain;
+	
+	private String cours;
+	private boolean isCertified;
+	
+	@OneToMany(mappedBy = "training", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Certificate> certificates;
+	
+	@ManyToOne
+	private Quiz quiz;
+	
+	@OneToMany(mappedBy = "training", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Penality> penalities;
+				
+	@OneToMany(mappedBy = "training", fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+	private List<Reaction> reactions;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<User> learners;
 	
 	
 

@@ -2,45 +2,41 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Education implements Serializable {
-
+public class Meeting implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idEduc ;
-	private String establishment ;
-	private String location ;
+	private Long id;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date startDate ;
+	private Date date;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date endDate ;
+	private String hour;
 	
-	private String description ;
+	@ManyToOne
+	private Partner partner;
+	
+	@ManyToOne
+	private User user;
 
-	 @ManyToOne
-	    private CV cv;
+
 }

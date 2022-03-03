@@ -6,27 +6,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Skill implements Serializable {
+public class Parameters implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idSkill;
-	private String designation ;
-	private String level ;
-	
-	@ManyToOne
-	private CV cv;
-
+	public int id;
+	public String nameAttribute;
+	public float cota;
 }

@@ -32,16 +32,19 @@ public class Stage implements Serializable {
 	private int idStage ;
 	private String establishment ;
 	private String location ; 
+	
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="MM/dd/yyyy")
 	private Date startDate ;
+	
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="MM/dd/yyyy")
 	private Date endDate ;
+	
 	private String description ;
 	
-	 @ManyToOne
-	    private CV cv;
+	@ManyToOne
+	private CV cv;
 	
 	
 }

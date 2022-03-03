@@ -3,7 +3,10 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+
 import javax.persistence.*;
+
+
 import lombok.*;
 
 
@@ -12,18 +15,22 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Subscription implements Serializable {
+public class Reclamation implements Serializable{
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String designation;
-	private int montant;
-	private String duration;
 	
-	@Temporal(TemporalType.DATE)
-	private Date date;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date created_at;
+	
+	private String title;
+	private String text;
+	private String decision;
 	
 	@ManyToOne
-	private Partner partner;
+	private User user;
+
+	
 
 }

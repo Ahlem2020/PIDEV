@@ -7,5 +7,5 @@ import tn.esprit.spring.entities.JobOffer;
 
 @Repository
 public interface JobOfferRepository extends CrudRepository<JobOffer, Integer> {
-
+           
 }

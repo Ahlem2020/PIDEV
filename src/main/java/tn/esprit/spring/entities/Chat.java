@@ -1,32 +1,37 @@
 package tn.esprit.spring.entities;
-
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Skill implements Serializable {
+public class Chat  implements Serializable  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8393860672677060796L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idSkill;
-	private String designation ;
-	private String level ;
+	private int id;
+	private String Content;
+	private String Sender;
+	private MessageType type;
 	
-	@ManyToOne
-	private CV cv;
-
+	public enum MessageType{
+		Chat,Leave,Join;
+	}
 }
+

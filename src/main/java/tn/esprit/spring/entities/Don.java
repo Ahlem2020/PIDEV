@@ -1,7 +1,9 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,20 +15,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Skill implements Serializable {
+public class Don implements Serializable{
+	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idSkill;
-	private String designation ;
-	private String level ;
+	public int id;
+	//Nameof the donater//
+	public String SourceDon ;
+	public int amount;
+	public Date created_at;
+	
+	
 	
 	@ManyToOne
-	private CV cv;
+	public Jackpot jackpot;
+	
+	@ManyToOne
+	public User user;
 
 }

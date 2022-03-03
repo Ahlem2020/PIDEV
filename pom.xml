@@ -58,7 +58,22 @@
     <artifactId>itext</artifactId>
     <version>2.1.7</version>
 </dependency>
-	
+<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>7.34.0</version>
+		</dependency>
+<dependency>
+  <groupId>org.apache.pdfbox</groupId>
+  <artifactId>pdfbox</artifactId>
+  <version>2.0.23</version>
+</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>

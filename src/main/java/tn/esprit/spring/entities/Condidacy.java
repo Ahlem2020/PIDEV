@@ -26,45 +26,45 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter 
+@Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor 
 @AllArgsConstructor
+
 public class Condidacy implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="MM/dd/yyyy")
+	//sss@JsonFormat(pattern="MM/dd/yyyy")
 	private Date created_at;
+	
+	@Temporal(TemporalType.DATE)
+	private Date interview_date;
+	
 	@Enumerated(EnumType.STRING)
 	private State state;
+	
 	@Enumerated(EnumType.STRING)
 	private Type type;
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="MM/dd/yyyy")
-	private Date dateInterview;
-	 
-	
+	 	
     @ManyToOne
     private User candidat;
-   
-    @ManyToOne
-    private JobOffer jobOffer;
     
-   /* @ManyToOne
-    private Interview interview;
-*/
-  
     @ManyToOne
     private Partner employer;
     
     @OneToMany(mappedBy="partner", cascade=CascadeType.ALL)
-
     private List<Module> module;
     
+    @ManyToOne
+    private JobOffer jobOffer;
+  
+    
 
+	
 	
 	
 	

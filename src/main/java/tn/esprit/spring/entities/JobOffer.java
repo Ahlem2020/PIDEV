@@ -34,31 +34,22 @@ public class JobOffer implements Serializable{
 	 private String description ; 
 	 private String place ; 
 	 private String salary ; 
-	 @Temporal(TemporalType.DATE)
-	
+	 
+	 @Temporal(TemporalType.DATE)	
 	 private Date created_at ;
 	 
-	 @Temporal(TemporalType.DATE)
-	
+	 @Temporal(TemporalType.DATE)	
 	 private Date validate_at;
 	 
-	 @Temporal(TemporalType.DATE)
-	
+	 @Temporal(TemporalType.DATE)	
 	 private Date update_at;
 	 
-	 private  String file ;
-	 
-	 
+	 private String file ;	 	 
 	 
 	    @ManyToOne
 	    private Partner candidature;
-	   
-	  /*  @ManyToOne    
-	    private Favori favori;
-	    */
-	    
-	    @OneToMany(mappedBy="jobOffer", cascade=CascadeType.ALL)
-		
+	   	    
+	    @OneToMany(mappedBy="jobOffer", cascade=CascadeType.ALL)		
 		private List<Condidacy> condidacies;
 
 	    

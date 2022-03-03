@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,11 +28,16 @@ public class WorkExperience implements Serializable{
 	private int id ;
 	private String employer ;
 	private String location ;
+	
+	@Temporal(TemporalType.DATE)
 	private Date StartDate;
+	
+	@Temporal(TemporalType.DATE)
 	private Date endDate ;
+	
 	private String description;
 	
 
-	 @ManyToOne
-	    private CV cv;
+	@ManyToOne
+	private CV cv;
 }

@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,20 +14,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Skill implements Serializable {
+public class Certificate implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idSkill;
-	private String designation ;
-	private String level ;
+	private int id;
+	private String qrCode;
+	private String identifier;
+		
 	
 	@ManyToOne
-	private CV cv;
-
+	private Training training;
+	
 }

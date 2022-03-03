@@ -9,38 +9,44 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Education implements Serializable {
+public class Jackpot implements Serializable{
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idEduc ;
-	private String establishment ;
-	private String location ;
+	public int id;
+	public Date created_at;
+	public Date updated_at;
+	public int amount;
+	public String designation;
+	public String goal;
+	@OneToOne
+	public Event event;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date startDate ;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date endDate ;
+	@OneToMany(cascade= CascadeType.ALL,mappedBy="jackpot")
+	public List<Don> dons;
 	
-	private String description ;
-
-	 @ManyToOne
-	    private CV cv;
+	
+	@ManyToOne
+	public Caisse caisse;
 }

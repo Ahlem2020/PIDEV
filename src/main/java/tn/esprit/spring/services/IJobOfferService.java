@@ -14,7 +14,10 @@ public interface IJobOfferService {
 	 JobOffer updateJobOffer(JobOffer jobOffer);
 	 
 	 List<JobOffer> getAllJobs();
-		
+	
+	 
+	 
+	 
 		//List<JobOffer> findById(Integer idJOffer);
 	//Iterable<JobOffer> listAllJobOffers();
 	//JobOffer getJobOfferById(Integer id);

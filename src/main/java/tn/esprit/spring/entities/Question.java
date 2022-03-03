@@ -13,20 +13,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Skill implements Serializable {
+public class Question implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idSkill;
-	private String designation ;
-	private String level ;
+	private int id;
+	private String question;
+	private String proposition1;
+	private String proposition2;
+	private String proposition3;
+	private String reponse;
 	
-	@ManyToOne
-	private CV cv;
+	@ManyToOne 
+	private Quiz quiz;
 
 }

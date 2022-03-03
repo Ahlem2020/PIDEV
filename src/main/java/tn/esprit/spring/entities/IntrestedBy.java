@@ -4,26 +4,22 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
-import lombok.*;
 
+import lombok.*;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Subscription implements Serializable {
+public class IntrestedBy implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String designation;
-	private int montant;
-	private String duration;
+	private String sewing;
+	private int valueSewing;
 	
-	@Temporal(TemporalType.DATE)
-	private Date date;
-	
-	@ManyToOne
-	private Partner partner;
+	@OneToOne(mappedBy="intrestedBy")
+	private User user;
 
 }
