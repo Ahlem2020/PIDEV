@@ -12,10 +12,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Setter
@@ -36,7 +40,8 @@ public class Comment  implements Serializable  {
 	private int nbLike;
 	private int nbDislike;
 	private String Content;
-	
-	@ManyToOne 
+	@JsonIgnore
+	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Subject subject;
 }

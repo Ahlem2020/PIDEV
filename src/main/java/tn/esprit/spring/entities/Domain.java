@@ -2,7 +2,5 @@ package tn.esprit.spring.entities;
 
 public enum Domain {
 
-	Couture,
-	Coiffure
-	
+	Coiffure,Couture,Cuisine, Entreprenariat,Architecture ,Marketing ,Sante , Economie,Communication ,Mecanique , Informatique;
 }

@@ -30,10 +30,10 @@ public class Advertisement  implements Serializable  {
 	private String NameAd;
 	private String  Canal;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date DateDeb;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date DateFin;
 	
 	private int nbVueCible;

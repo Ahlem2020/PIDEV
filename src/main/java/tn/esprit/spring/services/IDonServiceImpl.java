@@ -1,6 +1,7 @@
 package tn.esprit.spring.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,13 @@ public class IDonServiceImpl implements IDonService{
 	@Override
 	public void addDon(Don don) {
 		dr.save(don);
+		Jackpot j=jr.findById(don.getJackpot().getId()).orElse(null);// @formatter:off
+		j.setAmount(j.getAmount()+don.getAmount());
+		 jr.save(j);
+		// @formatter:on
+; 
+		// @formatter:on
+
 		
 	}
 
@@ -35,6 +43,14 @@ public class IDonServiceImpl implements IDonService{
 		return jack.getDons();
 		
 	}
+
+
+
+	
+	/*public int retrivedonsbyuser() {
+		
+		return dr.retrivedonsbyuser();
+	}*/
 
 
 

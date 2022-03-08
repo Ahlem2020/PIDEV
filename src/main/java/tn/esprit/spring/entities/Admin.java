@@ -1,12 +1,15 @@
 package tn.esprit.spring.entities;
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,20 +21,19 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Chat  implements Serializable  {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8393860672677060796L;
+public class Admin {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	private String Content;
-	private String Sender;
-	private MessageType type;
-	
-	public enum MessageType{
-		Chat,Leave,Join;
+	private Long id;
+	@Column(nullable = false, unique=true, length=255)
+	private String email;
+	@Column(nullable = false, unique=true, length=255)
+	private String password;
+	public Admin(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
 	}
+	
+	
 }
-

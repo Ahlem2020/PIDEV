@@ -19,4 +19,6 @@ public interface IJackpotService {
 	public List<Jackpot> jackpotencrs();
 	public  Map<Integer, Integer> afficherlisteneedy();
 	public  Map<Integer, Integer> attribuerjackpot(int i);
+	
+	public Jackpot retrivenextjackpot(int id);
 }

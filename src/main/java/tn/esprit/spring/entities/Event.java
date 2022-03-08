@@ -5,13 +5,17 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.springframework.data.annotation.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -34,8 +38,16 @@ public class Event implements Serializable{
 	public Date endDate;
 	public Date created_at;
 	public String domain;
+	 @Column(nullable = true, length = 64)
+	  
 	public String photos;
 	
+	 @Transient
+	    public String getPhotosImagePath() {
+	        if (photos == null ) return null;
+	         
+	        return "/user-photos/"  + photos;
+	    }
 	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="Event")
 	public List<Activity> activitys;
@@ -113,7 +125,7 @@ public class Event implements Serializable{
 		this.jackpot = jackpot;
 	}*/
 	@JsonIgnore
-	@ManyToMany(cascade=CascadeType.ALL,mappedBy="events")
+	@ManyToMany(cascade=CascadeType.ALL,mappedBy="events",fetch = FetchType.EAGER)
 	public List<User> participants;
 	@JsonIgnore
 	@OneToOne(mappedBy="event")

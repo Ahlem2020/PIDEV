@@ -1,6 +1,7 @@
 package tn.esprit.spring.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +31,14 @@ public class DonController {
 	{
 		ds.addDon(d);
 	}
-	
+	/*@GetMapping("/alldonsbyid")
+	public int getalldonsbyuser()
+	{
+		
+				
+		return ds.retrivedonsbyuser();
+	}*/
+
 	
 	@GetMapping("/alldons/{id}")
 	public List<Don> getDonByid(@PathVariable("id") int id)

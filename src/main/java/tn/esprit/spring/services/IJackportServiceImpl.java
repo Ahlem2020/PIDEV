@@ -1,7 +1,11 @@
 package tn.esprit.spring.services;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -11,15 +15,18 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Don;
 import tn.esprit.spring.entities.Donationuser;
 import tn.esprit.spring.entities.Etat;
+import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.entities.Jackpot;
 import tn.esprit.spring.entities.Parameters;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repository.DonationuserRepository;
+import tn.esprit.spring.repository.EventRepository;
 import tn.esprit.spring.repository.JackpotRepository;
 import tn.esprit.spring.repository.ParametersRepository;
 
@@ -34,9 +41,15 @@ public class IJackportServiceImpl implements IJackpotService{
 	
 	@Autowired
 	JackpotRepository jr;
+	@Autowired 
+	EventRepository er;
 	
 	@Override
 	public void addJackpot(Jackpot jackpot) {
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		jackpot.setEtat(Etat.ENCOURS);
+		jackpot.setCreated_at(date);
 		jr.save(jackpot);
 		
 	}
@@ -57,7 +70,10 @@ public class IJackportServiceImpl implements IJackpotService{
 	public int calculerscore (Donationuser u) {
 		int score = 0 ;
 		Parameters p= pr.findById(1).orElse(null);
+		
 		if (u.getUnemployed().equals("yes"))
+			
+			
 		{score = score + p.getUnemployed();
 		}
 		
@@ -151,10 +167,25 @@ public class IJackportServiceImpl implements IJackpotService{
 	          //mapentry.getKey() 
 	         // mapentry.getValue());
 			Donationuser d = dr.findById(key).orElse(null);
-			double a =amount * 0.25;
+			int help = 0 ;
+			if (d.getMedicalNeed()=="yes")
+			{
+				help = help +1000;
+			}
+			if (d.getSocialNeed()=="yes")
+			{
+				help = help + 500;
+			}
+			if (d.getNbPersFamily() <= 4)
+			{
+				help = help + 1200;
+			}
+
+			double a = amount * 0.10 +help ;
 			if (amount > 0)
 			{ 
 				d.setAmoutwon(a);
+				
 				amount = (int) (amount - a) ;
 			}
 			 dr.save(d);
@@ -163,13 +194,68 @@ public class IJackportServiceImpl implements IJackpotService{
 	        }
 		 j.setEtat(Etat.FINIS);
 		 jr.save(j);
+		 
+		 if ((amount > 0 ))
+		 {
+			 Jackpot next_jackpot=retrivenextjackpot(j.getId());
+			 next_jackpot.setAmount(next_jackpot.getAmount()+amount);
+			 jr.save(next_jackpot);
+		 }
 		return Listeargent;
 	}
+	
+	
+	@Scheduled(cron = "0 * * * * *" )
+	public void majdesjackpot()
+	{
+		Date date = new Date();
+	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+	
+		/* 
+		for(Event e: er.findAll())
+		{
+			if ( e.getEndDate().compareTo(date) >= 0 )
+				
+			{
+			  if (e.getJackpot() != null )
+			{
+				Jackpot j = e.getJackpot();
+				j.setEtat(Etat.FINIS);
+				jr.save(j);
+				e.setJackpot(j);
+				er.save(e);
+			}
+		}
+		
+	
 
 	
+	}*/
+	for (Jackpot j:jr.findAll())
+	{
+		
+		if (j.getEvent() != null)
+		{
+		Event e = j.getEvent();
+		if ( e.getEndDate().compareTo(date) <= 0 )
+		{
+			j.setEtat(Etat.FINIS);
+			jr.save(j);
+			e.setJackpot(j);
+			er.save(e);
+		}
+		}
 	}
 
-	
+	}
+
+	@Override
+	public Jackpot retrivenextjackpot(int id) {
+		Jackpot j1=jr.findById(id).orElse(null);
+		Jackpot j2=jr.retrivenextjackpot(id);
+		return j2;
+	}
+}
 	
 	
 
