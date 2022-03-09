@@ -1,0 +1,1271 @@
+{
+	"info": {
+		"_postman_id": "3e8b8669-de73-4872-ae02-6934a975d6a3",
+		"name": "women empowerment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Training",
+			"item": [
+				{
+					"name": "AddTraining",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZC5oYWRqc2FpZEBlc3ByaXQudG4iLCJpYXQiOjE2NDY3NzgyMDQsImV4cCI6MTY0Njg2NDYwNH0.XzqONtn1HZNQmr2tiXeCQC_V-Bfg1cgrDV7od99TsATS3xCUQXDPi221LrLBp9pK-V0oNgcdXPscEyLAgIXJkg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n\t\"subject\":\"base de données\",\n\t\"startDate\":\"2022-11-11\",\n\t\"endDate\":\"2022-11-20\",\n\t\"nbreMax\":50,\n\t\"domain\":\"Informatique\",\n\t\"trainerName\":\"Adel Jebali\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/save",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTraining",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":1,\n\t\"subject\":\"sujet 2\",\n\t\"startDate\":\"2022-11-11\",\n\t\"endDate\":\"2022-11-20\",\n\t\"nbreMax\":20,\n\t\"nbreParticipation\":0,\n\t\"note\":0,\n\t\"domain\":\"Coiffure\",\n\t\"cours\":\"cours 2\",\n\t\"trainerName\":\"ahmed\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Participer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/participe/2/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"participe",
+								"2",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveTraining",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/remove/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"remove",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EvaluateTraining",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"note1\":4,\n\t\"note2\":1,\n\t\"note3\":3,\n\t\"note4\":0,\n\t\"note5\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/evaluate/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"evaluate",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RetrieveById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"note1\":4,\n\t\"note2\":1,\n\t\"note3\":3,\n\t\"note4\":0,\n\t\"note5\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/retrieveById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"retrieveById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindBySubject",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"note1\":4,\n\t\"note2\":1,\n\t\"note3\":3,\n\t\"note4\":0,\n\t\"note5\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/retrieve-Subject/sujet 2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"retrieve-Subject",
+								"sujet 2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve-all-training",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"note1\":4,\n\t\"note2\":1,\n\t\"note3\":3,\n\t\"note4\":0,\n\t\"note5\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/retrieve-all-training",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"retrieve-all-training"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RetrieveByTrainer",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"note1\":4,\n\t\"note2\":1,\n\t\"note3\":3,\n\t\"note4\":0,\n\t\"note5\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/retrieveByTrainer/ahmed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"retrieveByTrainer",
+								"ahmed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchTraining",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"note1\":4,\n\t\"note2\":1,\n\t\"note3\":3,\n\t\"note4\":0,\n\t\"note5\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/searchTraining/1/su",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"searchTraining",
+								"1",
+								"su"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchTrainingByTiming",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"note1\":4,\n\t\"note2\":1,\n\t\"note3\":3,\n\t\"note4\":0,\n\t\"note5\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/searchTrainingByTiming/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"searchTrainingByTiming",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Suggestion",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"note1\":4,\n\t\"note2\":1,\n\t\"note3\":3,\n\t\"note4\":0,\n\t\"note5\":2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/suggestion/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"suggestion",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "QRCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/QRCode/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"QRCode",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddTrainingwithUpload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cours",
+									"type": "file",
+									"src": ""
+								},
+								{
+									"key": "subject",
+									"value": "sujet 33",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddCours",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cours",
+									"type": "file",
+									"src": ""
+								},
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/addCours",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"addCours"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quiz",
+			"item": [
+				{
+					"name": "http://localhost:8083/women/quiz/doQuiz/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t{\"id\":1,\n\t\"writedResponse\":\"1\"},\n\t{\"id\":2,\n\t\"writedResponse\":\"bleu\"},\n{\t\"id\":3,\n\t\"writedResponse\":\"ahmed\"},\n{\t\"id\":4,\n\t\"writedResponse\":\"tunis\"},\t\n{\t\"id\":5,\n\t\"writedResponse\":\"1.7\"},\n{\t\"id\":6,\n\t\"writedResponse\":\"20746081\"},\n{\t\"id\":7,\n\t\"writedResponse\":\"mars\"},\n{\t\"id\":8,\n\t\"writedResponse\":\"khaled\"},\n{\t\"id\":9,\n\t\"writedResponse\":\"1\"},\n{\t\"id\":10,\n\t\"writedResponse\":\"dell\"}\n\t]\n"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/quiz/doQuiz/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"quiz",
+								"doQuiz",
+								"1"
+							]
+						},
+						"description": "DoQuiz"
+					},
+					"response": []
+				},
+				{
+					"name": "AddQuiz",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"timing\": 60,\n\t\"questions\":[\n\t\t{\"question\": \"Lequel des éléments suivants n’est pas un concept POO en Java?\", \"proposition1\":\"Héritage\", \"proposition2\":\"Compilation\", \"proposition3\":\"Encapsulation\", \"reponse\":\"Compilation\"},\n\n\t\t{\"question\": \"Quand la surcharge de méthode est-elle déterminée?\", \"proposition1\":\"Au moment de l’exécution\", \"proposition2\":\"Au moment du codage\", \"proposition3\":\"Au moment de la compilation\", \"reponse\":\"Au moment de la compilation\"},\n\t\n\t\t{\"question\": \"Quel concept de Java est un moyen de convertir des objets du monde réel en termes de classe?\", \"proposition1\":\"Polymorphisme\", \"proposition2\":\"Encapsulation\", \"proposition3\":\"Abstraction\", \"reponse\":\"Abstraction\"},\n\t\n\t\t{\"question\": \"Quel concept de Java est utilisé en combinant des méthodes et des attributs dans une classe?\", \"proposition1\":\"Polymorphisme\", \"proposition2\":\"Encapsulation\", \"proposition3\":\"Abstraction\", \"reponse\":\"Encapsulation\"},\n\t\n\t\t{\"question\": \"Quel concept de Java est un moyen de convertir des objets du monde réel en termes de classe?\", \"proposition1\":\"Polymorphisme\", \"proposition2\":\"Encapsulation\", \"proposition3\":\"Abstraction\", \"reponse\":\"Abstraction\"},\n\t\n\t\t{\"question\": \"Quand la surcharge de méthode est-elle déterminée?\", \"proposition1\":\"Au moment de l’exécution\", \"proposition2\":\"Au moment du codage\", \"proposition3\":\"Au moment de la compilation\", \"reponse\":\"Au moment de la compilation\"},\n\t\n\t\t{\"question\": \"Quel concept de Java est un moyen de convertir des objets du monde réel en termes de classe?\", \"proposition1\":\"Polymorphisme\", \"proposition2\":\"Encapsulation\", \"proposition3\":\"Abstraction\", \"reponse\":\"Abstraction\"},\n\t\n\t\t{\"question\": \"Quand la surcharge de méthode est-elle déterminée?\", \"proposition1\":\"Au moment de l’exécution\", \"proposition2\":\"Au moment du codage\", \"proposition3\":\"Au moment de la compilation\", \"reponse\":\"Au moment de la compilation\"},\n\n\t\t{\"question\": \"Quel concept de Java est un moyen de convertir des objets du monde réel en termes de classe?\", \"proposition1\":\"Polymorphisme\", \"proposition2\":\"Encapsulation\", \"proposition3\":\"Abstraction\", \"reponse\":\"Abstraction\"},\n\t\n\t\t{\"question\": \"Quand la surcharge de méthode est-elle déterminée?\", \"proposition1\":\"Au moment de l’exécution\", \"proposition2\":\"Au moment du codage\", \"proposition3\":\"Au moment de la compilation\", \"reponse\":\"Au moment de la compilation\"}\n\t]\n\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/quiz/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"quiz",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assignQuizToTraining",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/training/assignQuizToTraining/1/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"training",
+								"assignQuizToTraining",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DoQuiz",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t{\"id\":11,\n\t\"writedResponse\":\"Au moment de la compilation\"},\n\t{\"id\":12,\n\t\"writedResponse\":\"Abstraction\"},\n{\t\"id\":13,\n\t\"writedResponse\":\"Au moment de la compilation\"},\n{\t\"id\":4,\n\t\"writedResponse\":\"Compilation\"},\t\n{\t\"id\":5,\n\t\"writedResponse\":\"Au moment de la compilation\"},\n{\t\"id\":6,\n\t\"writedResponse\":\"Abstraction\"},\n{\t\"id\":7,\n\t\"writedResponse\":\"Abstraction\"},\n{\t\"id\":8,\n\t\"writedResponse\":\"Abstraction\"},\n{\t\"id\":9,\n\t\"writedResponse\":\"Au moment de la compilation\"},\n{\t\"id\":10,\n\t\"writedResponse\":\"Abstraction\"}\n\t]\n"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/quiz/doQuiz/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"quiz",
+								"doQuiz",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve-all-Quizs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/quiz/retrieve-all-Quizs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"quiz",
+								"retrieve-all-Quizs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/quiz/retrieve-by-id/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"quiz",
+								"retrieve-by-id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Penality",
+			"item": [
+				{
+					"name": "Remove penality",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":1,\n\t\"type\":\"Warn\",\n\t\"cause\":\"retard\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/penality/remove/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"penality",
+								"remove",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPenality",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"type\":\"Warn\",\n\t\"cause\":\"mauvais comportement\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/penality/add/2/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"penality",
+								"add",
+								"2",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve-all-penalities",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":1,\n\t\"type\":\"Warn\",\n\t\"cause\":\"retard\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/penality/retrieve-all-penalities",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"penality",
+								"retrieve-all-penalities"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User/signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"sahar.gharrad@esprit.tn\",\n\t\t\"password\":\"20746081\",\n\t\"passwordConfirm\":\"20746081\",\n\t\"firstName\":\"gharrad\",\n\t\"lastName\":\"sahar\",\n\t\"dateOfBirth\":\"2000-01-01\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/user/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"ahmedhajsaid@gmail.com\",\n\t\"password\":\"20746081\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/user/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"user",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jackpot",
+			"item": [
+				{
+					"name": "Ajout-jackpot",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaG1lZGhhanNhaWRAZ21haWwuY29tIiwiaWF0IjoxNjQ2NjkxNTY1LCJleHAiOjE2NDY3Nzc5NjV9.TABvwcL66-mp0uIy5FTBJ2o8WD_FmJaTcZIiauQ8eDMvjcYmNuLoqc4RaHFRxQtjNza8bUBjx3xmretdEKSymQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\r\n    \"amount\":0,\r\n    \"designation\":\"help education \",\r\n    \"goal\":\"help\",\r\n    \"etat\":\"PASENCORE\"\r\n   \r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/jackpot/ajout-jackpot",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"jackpot",
+								"ajout-jackpot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "jackpots-encours",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/jackpot/jackpots-encours",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"jackpot",
+								"jackpots-encours"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listegangant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/jackpot/listegangant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"jackpot",
+								"listegangant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UploadNeedPerson",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "file",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": ""
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/event/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"event",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AttribuerJackpot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/jackpot/att/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"jackpot",
+								"att",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Score by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/jackpot/score/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"jackpot",
+								"score",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Add-event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/event/ajout-event-upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"event",
+								"ajout-event-upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get-events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/event/get-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"event",
+								"get-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recherche event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/event/get-eventbydesc/ch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"event",
+								"get-eventbydesc",
+								"ch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activite",
+			"item": [
+				{
+					"name": "Get-activite by Id event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/event/get-acti/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"event",
+								"get-acti",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Don",
+			"item": [
+				{
+					"name": "http://localhost:8083/women/don/ajout-don",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/don/ajout-don",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"don",
+								"ajout-don"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-don -by-jackpot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8083/women/don/alldons/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"women",
+								"don",
+								"alldons",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "37aa0914-3871-4263-a014-3c70f2fff9fb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "281e33c3-bc24-4f0c-bf7b-b739ef5e7741",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
