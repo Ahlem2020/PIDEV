@@ -36,6 +36,7 @@ public class CV implements Serializable{
 	private String linkdIn ;
 	private String profileDescription;
 	private String centerOfInterest;
+	private Byte file ;
 	
 	 @OneToMany(mappedBy="cv", cascade=CascadeType.ALL)
 		
@@ -67,7 +68,18 @@ public class CV implements Serializable{
 	 
 	 @OneToOne
 	    private User user;
-	
+	 
+	 
+	 public CV(String profileTitle, String aboutMe, String internetSite, String drivingLesence,String linkdIn,String profileDescription ,String centerOfInterest) {
+			super();
+			this.profileTitle = profileTitle;
+			this.aboutMe = aboutMe;
+			this.internetSite = internetSite;
+			this.drivingLesence = drivingLesence;
+			this.linkdIn = linkdIn;
+			this.profileDescription = profileDescription;
+			this.centerOfInterest = centerOfInterest;
+		}
 
 
 

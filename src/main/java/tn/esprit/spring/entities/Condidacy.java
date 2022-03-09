@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -33,12 +34,18 @@ import lombok.Setter;
 
 public class Condidacy implements Serializable {
 
+	@Override
+	public String toString() {
+		return "Condidacy [id=" + id + ", created_at=" + created_at + ", state=" + state + ", type=" + type + ", score="
+				+ score + ", candidat=" + candidat + ", module=" + module + ", jobOffer=" + jobOffer + "]";
+	}
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
 	@Temporal(TemporalType.DATE)
-	@JsonFormat(pattern="MM/dd/yyyy")
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date created_at;
 	
 	@Enumerated(EnumType.STRING)
@@ -46,19 +53,27 @@ public class Condidacy implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	private Type type;
-	 	
+	 
+	@Transient
+	private int score;
+	
+	
     @ManyToOne
     private User candidat;
     
     @ManyToOne
-    private Partner employer;
-    
-    @OneToMany(mappedBy="partner", cascade=CascadeType.ALL)
-    private List<Module> module;
+	private Module module;
     
     @ManyToOne
     private JobOffer jobOffer;
   
+    @Temporal(TemporalType.DATE)
+	private Date interview_date;
+	
+
+	
+	
+	
     
 
 	

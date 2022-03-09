@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +32,7 @@ public class Jackpot implements Serializable{
 	/**
 	 * 
 	 */
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,11 +42,12 @@ public class Jackpot implements Serializable{
 	public int amount;
 	public String designation;
 	public String goal;
+	public Etat etat;
 	@OneToOne
 	public Event event;
 	
-	
-	@OneToMany(cascade= CascadeType.ALL,mappedBy="jackpot")
+	@JsonIgnore
+	@OneToMany(cascade= CascadeType.ALL,mappedBy="jackpot",  orphanRemoval = true)
 	public List<Don> dons;
 	
 	

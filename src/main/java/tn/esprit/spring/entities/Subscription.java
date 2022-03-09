@@ -19,11 +19,9 @@ public class Subscription implements Serializable {
 	private String designation;
 	private int montant;
 	private String duration;
-	
-	@Temporal(TemporalType.DATE)
 	private Date date;
 	
 	@ManyToOne
-	private Partner partner;
+	Partner partners;
 
 }

@@ -29,4 +29,9 @@ public class Skill implements Serializable {
 	@ManyToOne
 	private CV cv;
 
+	
+	@Override
+	public String toString() {
+		return "Skill [idSkill=" + idSkill + ", designation=" + designation + ", level=" + level + ", cv=" + cv + "]";
+	}
 }

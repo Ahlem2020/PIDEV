@@ -6,7 +6,7 @@ import tn.esprit.spring.entities.Penality;
 
 public interface IPenalityService {
 	
-	Penality addPenalityToLearner(Penality penality, int idLearner);
+	Penality addPenalityToLearner(Penality penality, long idLearner, int idTraining);
 	
 	Penality updatePenality(Penality penality);
 	
@@ -14,6 +14,6 @@ public interface IPenalityService {
 	
 	List<Penality> findAllPenalities();
 	
-	List<Penality> findByLearner(int idLearner);
+	List<Penality> findByLearner(long idLearner);
 
 }

@@ -9,6 +9,6 @@ import tn.esprit.spring.entities.Penality;
 
 @Repository
 public interface PenalityRepository extends CrudRepository<Penality, Integer> {
-	List<Penality> findByLearner(int idLearner);
+	List<Penality> findByLearner(long idLearner);
 
 }

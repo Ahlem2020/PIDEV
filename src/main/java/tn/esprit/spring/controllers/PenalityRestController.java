@@ -23,11 +23,11 @@ public class PenalityRestController {
 	@Autowired
 	IPenalityService penalityServ;
 	
-	@PostMapping("/add/{idLearner}")
+	@PostMapping("/add/{idLearner}/{idTraining}")
 	@ResponseBody
-	public Penality addPenality(@RequestBody Penality p, @PathVariable("idLearner") int id)
+	public Penality addPenality(@RequestBody Penality p, @PathVariable("idLearner") int idLearner, @PathVariable("idTraining") int idTraining)
 	{
-		return penalityServ.addPenalityToLearner(p, id);
+		return penalityServ.addPenalityToLearner(p, idLearner, idTraining);
 	}
 	
 	@PutMapping("/update")

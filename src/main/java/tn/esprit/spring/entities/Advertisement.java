@@ -10,8 +10,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,10 +36,10 @@ public class Advertisement  implements Serializable  {
 	private String NameAd;
 	private String  Canal;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date DateDeb;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date DateFin;
 	
 	private int nbVueCible;
@@ -43,6 +49,10 @@ public class Advertisement  implements Serializable  {
 	
 	@Enumerated(EnumType.STRING)
 	private Domain domain;
+	@JsonIgnore
+	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private User user;
 	
 	
 	

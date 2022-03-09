@@ -3,6 +3,7 @@ package tn.esprit.spring.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,6 +19,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,27 +48,29 @@ public class Training implements Serializable {
 	private int nbreMax;
 	private int nbreParticipation;
 	private int note;
+	private int nbEvaluation;
 	
 	@Enumerated(EnumType.STRING)
 	private Domain domain;
 	
 	private String cours;
 	private boolean isCertified;
+	private String trainerName;
+	private String seances;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "training", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Certificate> certificates;
 	
 	@ManyToOne
 	private Quiz quiz;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "training", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<Penality> penalities;
-				
-	@OneToMany(mappedBy = "training", fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	private List<Reaction> reactions;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	private List<User> learners;
+	@JsonIgnore
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<User> learners;
 	
 	
 

@@ -25,8 +25,7 @@ public class Certificate implements Serializable {
 	private int id;
 	private String qrCode;
 	private String identifier;
-		
-	
+			
 	@ManyToOne
 	private Training training;
 	

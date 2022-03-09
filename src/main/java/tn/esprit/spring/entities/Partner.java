@@ -7,6 +7,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,28 +24,33 @@ public class Partner implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@Column(nullable = false, unique=true, length=255)
 	private String email;
+	@Column(nullable = false, unique=true, length=255)
 	private String password;
+	@Column(nullable = false, unique=true, length=255)
 	private String passwordConfirm;
-	private int note;
+	private float note=-1;
 	private boolean isDisponible;
 	private String name;
-	
-	@Temporal(TemporalType.TIMESTAMP)
+	private String address;
+	private String logo;
 	private Date subscriptionDate;
-	
-	@Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
 	private PartnerType type;
+    private boolean isDesactivate;
+	private int counterLogin;
+	private String accessToken;
 	
-	@OneToMany(mappedBy = "partner", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	private List<Subscription> subscriptions;
 	
-	@OneToMany(mappedBy = "partner", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
-	private List<Meeting> meetings;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="partners")
+	private Set<Subscription> subscriptions;
 	
-	@OneToMany(mappedBy = "employer", cascade={CascadeType.PERSIST, CascadeType.REMOVE})	
-	private List<Condidacy> condidaciesE;
- 
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="partner")
+	private Set<Meeting> meetings;
+
+	@JsonIgnore
 	@OneToMany(mappedBy="partner", cascade=CascadeType.ALL)	
 	private List<Module> modules;
 	
@@ -51,8 +58,19 @@ public class Partner implements Serializable {
   	private List<JobOffer> jobOffer;
  
  
-	@OneToMany(mappedBy="partner", cascade=CascadeType.ALL)	
+	@OneToMany(mappedBy="partners", cascade=CascadeType.ALL)	
   	private List<Subscription> Subscription;
+	public Partner(String email, String password, String passwordConfirm, int note, String name, Date subscriptionDate,
+			PartnerType type) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.passwordConfirm = passwordConfirm;
+		this.note = note;
+		this.name = name;
+		this.subscriptionDate = subscriptionDate;
+		this.type = type;
+	}
 	
 
 }

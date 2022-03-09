@@ -9,9 +9,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,18 +39,20 @@ public class Subject  implements Serializable  {
 
 	private int nbVue;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date CreatedAt;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date UpdatedAt;
 	
 	@Enumerated(EnumType.STRING)
 	private Domain domaine;
-	
-	@OneToMany(mappedBy="subject") 
-	private List<Comment> Comments;
 
+	@OneToMany(mappedBy="subject" )
+	private List<Comment> Comments;
+	@JsonIgnore
+	@ManyToOne
+	private User user;
 
 	
 	
